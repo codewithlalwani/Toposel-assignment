@@ -1,0 +1,543 @@
+/*
+Theme Name: Toposel E-commerce
+Author: Yash Lalwani
+Description: Mobile-first e-commerce homepage for the Toposel WordPress assignment
+Version: 1.0
+Text Domain: toposel-ecommerce
+*/
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Satoshi', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ========================================
+   ANNOUNCEMENT BAR
+   ======================================== */
+.announcement-bar {
+  background-color: #000000;
+  color: #ffffff;
+  text-align: center;
+  padding: 9px 16px;
+  font-size: 12px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.announcement-bar__text {
+  margin: 0;
+  font-weight: 400;
+}
+
+.announcement-bar__text a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.announcement-bar__close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  line-height: 1;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-header__menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.site-header__menu-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.site-header__logo {
+  font-family: 'Integral CF', 'Inter', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-header__actions a,
+.site-header__actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #000000;
+}
+
+.site-header__actions svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.hero {
+  background-color: #F2F0F1;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__content {
+  padding: 30px 16px 0;
+}
+
+.hero__heading {
+  font-family: 'Integral CF', 'Inter', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 34px;
+  color: #000000;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  letter-spacing: 0;
+}
+
+.hero__subheading {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 24px;
+  max-width: 340px;
+}
+
+.hero__button {
+  display: inline-block;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 15px 54px;
+  border-radius: 62px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.hero__button:hover {
+  background-color: #333333;
+}
+
+/* Hero Stats */
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.hero__stat {
+  flex: 0 0 50%;
+  padding: 12px 0;
+  position: relative;
+}
+
+.hero__stat:nth-child(1),
+.hero__stat:nth-child(2) {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.hero__stat:nth-child(1),
+.hero__stat:nth-child(3) {
+  border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+.hero__stat:nth-child(3) {
+  flex: 0 0 100%;
+  border-right: none;
+}
+
+.hero__stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+  line-height: 1.2;
+}
+
+.hero__stat-label {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+  display: block;
+  margin-top: 2px;
+}
+
+/* Hero Image */
+.hero__image {
+  width: 100%;
+  position: relative;
+}
+
+.hero__image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Star decorations */
+.hero__star {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero__star--large {
+  width: 56px;
+  height: 56px;
+  right: 20px;
+  top: 30px;
+}
+
+.hero__star--small {
+  width: 36px;
+  height: 36px;
+  left: 60px;
+  top: 120px;
+}
+
+/* ========================================
+   BRAND BAR
+   ======================================== */
+.brand-bar {
+  background-color: #000000;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  gap: 20px 32px;
+}
+
+.brand-bar__logo {
+  height: 23px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
+/* ========================================
+   SECTION COMMON
+   ======================================== */
+.section-title {
+  font-family: 'Integral CF', 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+/* ========================================
+   NEW ARRIVALS
+   ======================================== */
+.new-arrivals {
+  padding: 50px 16px 40px;
+}
+
+.new-arrivals__title {
+  font-family: 'Integral CF', 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+.new-arrivals__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* ========================================
+   PRODUCT CARD
+   ======================================== */
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card__image {
+  background-color: #F0EEED;
+  border-radius: 13px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card__image:hover img {
+  transform: scale(1.05);
+}
+
+.product-card__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.product-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.product-card__stars {
+  display: flex;
+  gap: 2px;
+}
+
+.product-card__stars svg {
+  width: 15px;
+  height: 15px;
+}
+
+.product-card__stars .star-filled {
+  color: #FFC633;
+}
+
+.product-card__stars .star-half {
+  color: #FFC633;
+}
+
+.product-card__stars .star-empty {
+  color: #d4d4d4;
+}
+
+.product-card__rating-text {
+  font-size: 12px;
+  color: rgba(0,0,0,0.6);
+}
+
+.product-card__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.product-card__current-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.product-card__original-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: line-through;
+}
+
+.product-card__discount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 51, 51, 0.1);
+  color: #FF3333;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 62px;
+}
+
+/* ========================================
+   VIEW ALL BUTTON
+   ======================================== */
+.view-all {
+  text-align: center;
+  margin-top: 24px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 40px;
+}
+
+.view-all__button {
+  display: inline-block;
+  padding: 13px 54px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 62px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-all__button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* ========================================
+   WOOCOMMERCE OVERRIDES
+   ======================================== */
+.woocommerce .star-rating {
+  color: #FFC633;
+  font-size: 14px;
+}
+
+.woocommerce .product-card .woocommerce-Price-amount {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.woocommerce .product-card del .woocommerce-Price-amount {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.woocommerce .product-card ins {
+  text-decoration: none;
+}
+
+/* ========================================
+   RESPONSIVE — TABLET+
+   ======================================== */
+@media (min-width: 768px) {
+  .hero__heading {
+    font-size: 48px;
+  }
+
+  .hero__stats {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .hero__stat {
+    flex: 0 0 auto;
+    border: none !important;
+    padding: 12px 24px;
+  }
+
+  .hero__stat:nth-child(1),
+  .hero__stat:nth-child(2) {
+    border-bottom: none;
+    border-right: 1px solid rgba(0,0,0,0.1) !important;
+  }
+
+  .hero__stat:nth-child(3) {
+    flex: 0 0 auto;
+  }
+
+  .new-arrivals__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .brand-bar {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 28px 40px;
+    gap: 0;
+  }
+
+  .brand-bar__logo {
+    height: 28px;
+  }
+}
