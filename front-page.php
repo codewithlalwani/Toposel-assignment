@@ -21,7 +21,7 @@ $hero_btn_link = '';
 $hero_image    = '';
 
 if ( function_exists( 'get_field' ) ) {
-    $hero_heading  = get_field( 'hero_heading' );
+    $hero_heading  = get_field( 'hero_heading', 'option' );
     $hero_sub      = get_field( 'hero_subheading' );
     $hero_btn_text = get_field( 'hero_button_text' );
     $hero_btn_link = get_field( 'hero_button_link' );
@@ -29,10 +29,14 @@ if ( function_exists( 'get_field' ) ) {
 }
 
 // Fallback defaults (matches the Figma design)
-if ( ! $hero_heading )  $hero_heading  = 'FIND CLOTHES THAT MATCHES YOUR STYLE';
-if ( ! $hero_sub )      $hero_sub      = 'Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.';
-if ( ! $hero_btn_text ) $hero_btn_text = 'Shop Now';
-if ( ! $hero_btn_link ) $hero_btn_link = '#';
+if ( ! $hero_heading )  $hero_heading  = get_theme_mod( 'hero_heading', 'FIND CLOTHES THAT MATCHES YOUR STYLE' );
+if ( ! $hero_sub )      $hero_sub      = get_theme_mod( 'hero_subheading', 'Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.' );
+if ( ! $hero_btn_text ) $hero_btn_text = get_theme_mod( 'hero_button_text', 'Shop Now' );
+if ( ! $hero_btn_link ) $hero_btn_link = get_theme_mod( 'hero_button_link', '#' );
+if ( ! $hero_image ) {
+    $hero_image_id = get_theme_mod( 'hero_image' );
+    $hero_image    = $hero_image_id ? wp_get_attachment_image_url( $hero_image_id, 'full' ) : '';
+}
 ?>
 
 <section class="hero">
@@ -46,25 +50,25 @@ if ( ! $hero_btn_link ) $hero_btn_link = '#';
     <!-- Stats -->
     <div class="hero__stats">
       <div class="hero__stat">
-        <span class="hero__stat-number">200+</span>
-        <span class="hero__stat-label">International Brands</span>
+        <span class="hero__stat-number"><?php echo esc_html( get_theme_mod( 'stat_one_number', '200+' ) ); ?></span>
+        <span class="hero__stat-label"><?php echo esc_html( get_theme_mod( 'stat_one_label', 'International Brands' ) ); ?></span>
       </div>
       <div class="hero__stat">
-        <span class="hero__stat-number">2,000+</span>
-        <span class="hero__stat-label">High-Quality Products</span>
+        <span class="hero__stat-number"><?php echo esc_html( get_theme_mod( 'stat_two_number', '2,000+' ) ); ?></span>
+        <span class="hero__stat-label"><?php echo esc_html( get_theme_mod( 'stat_two_label', 'High-Quality Products' ) ); ?></span>
       </div>
       <div class="hero__stat">
-        <span class="hero__stat-number">30,000+</span>
-        <span class="hero__stat-label">Happy Customers</span>
+        <span class="hero__stat-number"><?php echo esc_html( get_theme_mod( 'stat_three_number', '30,000+' ) ); ?></span>
+        <span class="hero__stat-label"><?php echo esc_html( get_theme_mod( 'stat_three_label', 'Happy Customers' ) ); ?></span>
       </div>
     </div>
   </div>
 
   <!-- Hero Image -->
   <div class="hero__image">
-    <?php if ( $hero_image && is_array( $hero_image ) ) : ?>
-      <img src="<?php echo esc_url( $hero_image['url'] ); ?>"
-           alt="<?php echo esc_attr( $hero_image['alt'] ?? 'Hero Banner' ); ?>">
+    <?php if ( $hero_image ) : ?>
+      <img src="<?php echo esc_url( is_array( $hero_image ) ? $hero_image['url'] : $hero_image ); ?>"
+           alt="<?php echo esc_attr( is_array( $hero_image ) ? ( $hero_image['alt'] ?? 'Hero Banner' ) : 'Hero Banner' ); ?>">
     <?php else : ?>
       <!-- Placeholder — replace with your hero image via ACF -->
       <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/Rectangle2.svg' ); ?>"
@@ -127,7 +131,7 @@ if ( function_exists( 'get_field' ) ) {
     $na_category = get_field( 'new_arrivals_category' );
 }
 
-if ( ! $na_title ) $na_title = 'NEW ARRIVALS';
+if ( ! $na_title ) $na_title = get_theme_mod( 'new_arrivals_title', 'NEW ARRIVALS' );
 
 // Build WooCommerce product query
 $args = array(

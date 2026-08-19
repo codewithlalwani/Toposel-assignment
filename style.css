@@ -52,6 +52,18 @@ button {
   font-family: inherit;
 }
 
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ========================================
    ANNOUNCEMENT BAR
    ======================================== */
@@ -102,6 +114,11 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.site-header__nav,
+.site-header__search {
+  display: none;
 }
 
 .site-header__left {
@@ -526,7 +543,7 @@ button {
   }
 
   .new-arrivals__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 
@@ -539,5 +556,235 @@ button {
 
   .brand-bar__logo {
     height: 28px;
+  }
+}
+
+
+/* ========================================
+   RESPONSIVE — DESKTOP
+   ======================================== */
+@media (min-width: 1024px) {
+  .announcement-bar {
+    padding-block: 9px;
+    font-size: 14px;
+  }
+
+  .announcement-bar__close {
+    right: max(32px, calc((100vw - 1240px) / 2));
+  }
+
+  .site-header {
+    position: relative;
+    max-width: 1240px;
+    min-height: 96px;
+    margin: 0 auto;
+    padding: 20px 0;
+    gap: 28px;
+  }
+
+  .site-header__menu-toggle,
+  .site-header__actions > a:first-child {
+    display: none;
+  }
+
+  .site-header__left {
+    flex: 0 0 auto;
+  }
+
+  .site-header__logo {
+    font-size: 32px;
+  }
+
+  .site-header__nav {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .site-header__nav .menu {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .site-header__nav a {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .site-header__search {
+    display: flex;
+    align-items: center;
+    flex: 1 1 400px;
+    min-width: 220px;
+    height: 48px;
+    padding: 0 18px;
+    gap: 12px;
+    border-radius: 999px;
+    color: rgba(0, 0, 0, 0.4);
+    background: #f0f0f0;
+  }
+
+  .site-header__search svg {
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .site-header__search input[type="search"] {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    color: #000;
+    background: transparent;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(430px, 0.9fr);
+    min-height: 600px;
+  }
+
+  .hero__content {
+    align-self: center;
+    width: 100%;
+    max-width: 720px;
+    margin-left: max(32px, calc((100vw - 1240px) / 2));
+    padding: 56px 44px 56px 0;
+    z-index: 2;
+  }
+
+  .hero__heading {
+    max-width: 650px;
+    margin-bottom: 28px;
+    font-size: clamp(52px, 4.45vw, 64px);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .hero__subheading {
+    max-width: 560px;
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+
+  .hero__button {
+    width: auto;
+    min-width: 210px;
+  }
+
+  .hero__stats {
+    justify-content: flex-start;
+    margin-top: 32px;
+    padding: 0;
+    text-align: left;
+  }
+
+  .hero__stat {
+    padding: 0 28px;
+  }
+
+  .hero__stat:first-child {
+    padding-left: 0;
+  }
+
+  .hero__stat-number {
+    font-size: 36px;
+  }
+
+  .hero__stat-label {
+    font-size: 14px;
+  }
+
+  .hero__image {
+    height: 100%;
+    min-height: 600px;
+  }
+
+  .hero__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .brand-bar {
+    min-height: 122px;
+    padding-inline: max(32px, calc((100vw - 1240px) / 2));
+  }
+
+  .brand-bar__logo {
+    max-width: 180px;
+    height: 34px;
+  }
+
+  .new-arrivals {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 72px 0 64px;
+  }
+
+  .new-arrivals__title {
+    margin-bottom: 48px;
+    font-size: 48px;
+  }
+
+  .new-arrivals__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .product-card__name {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1300px) {
+  .site-header,
+  .new-arrivals {
+    margin-inline: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .announcement-bar__close {
+    display: none;
+  }
+
+  .hero__heading {
+    overflow-wrap: anywhere;
+  }
+
+  .brand-bar__logo {
+    max-width: 130px;
+  }
+
+  .new-arrivals__grid {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 389px) {
+  .site-header__logo {
+    font-size: 22px;
+  }
+
+  .site-header__actions {
+    gap: 8px;
+  }
+
+  .hero__heading {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .hero__content,
+  .new-arrivals {
+    padding-inline: 12px;
+  }
+
+  .product-card__current-price,
+  .product-card__original-price {
+    font-size: 17px;
   }
 }

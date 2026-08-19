@@ -16,7 +16,7 @@ if ( function_exists( 'get_field' ) ) {
     $announcement = get_field( 'announcement_bar_text', 'option' );
 }
 if ( ! $announcement ) {
-    $announcement = 'Sign up and get 20% off to your first order. <a href="#">Sign Up Now</a>';
+    $announcement = get_theme_mod( 'announcement_bar_text', 'Sign up and get 20% off to your first order. Sign Up Now' );
 }
 ?>
 <div class="announcement-bar" id="announcement-bar">
@@ -32,6 +32,15 @@ if ( ! $announcement ) {
     </button>
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-header__logo">SHOP.CO</a>
   </div>
+  <nav class="site-header__nav" aria-label="<?php esc_attr_e( 'Primary navigation', 'toposel-ecommerce' ); ?>">
+    <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'fallback_cb' => 'toposel_primary_menu_fallback', 'depth' => 1 ) ); ?>
+  </nav>
+  <form class="site-header__search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <label class="screen-reader-text" for="header-product-search"><?php esc_html_e( 'Search products', 'toposel-ecommerce' ); ?></label>
+    <input id="header-product-search" type="search" name="s" placeholder="<?php esc_attr_e( 'Search for products…', 'toposel-ecommerce' ); ?>">
+    <input type="hidden" name="post_type" value="product">
+  </form>
   <div class="site-header__actions">
     <a href="#" aria-label="Search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
